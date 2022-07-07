@@ -1,0 +1,17 @@
+<main>
+  <h1>
+  New Article
+  </h1>
+  <%= render 'article_errors' %>
+  <%= form_with(scope: :article, url: articles_path, data: { turbo: false }) do |form| %>
+    <%= render partial: 'form', locals: { form: form } %>
+    <br>
+    <%= form.submit "Create article" %>
+  <% end %>
+</main>
+<br>
+<aside>
+  <section>
+    <%= link_to "Back to article list", root_path %>
+  </section>
+</aside>

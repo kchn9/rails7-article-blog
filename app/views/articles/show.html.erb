@@ -1,0 +1,13 @@
+<main>
+  <h1>
+    <%= @article.title %>
+  </h1>
+  <p>
+    <%= @article.content %>
+  </p>
+</main>
+<section>
+  <%= link_to "Edit", edit_article_path(@article) %> |
+  <%= link_to "Delete", article_path(@article), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %> |
+  <%= link_to "Back to articles list", root_path %>
+</section>

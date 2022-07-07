@@ -1,0 +1,45 @@
+<main>
+  <h1>
+    Articles
+  </h1>
+  <dl>
+    <% @articles.each do |a| %>
+      <article>
+        <dt>
+          <h2>
+            <%= a.title %>
+          </h2>
+        </dt>
+        <dd>
+          <i>
+            <%= a.content %>
+          </i>
+          <section>
+            <ul>
+              <li>
+                <%= link_to "Show", article_path(a) %>
+              </li>
+              <li>
+                <%= link_to "Edit", edit_article_path(a) %>
+              </li>
+              <li>
+                <%= link_to "Delete", article_path(a), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %>
+              </li>
+            </ul>
+          </section>
+        </dd>
+      </article>
+    <% end %>
+  </dl>
+</main>
+<aside>
+  <section>
+    <ul>
+      <li>
+        <%= link_to "Create new article", new_article_path %>
+      </li>
+    </ul>
+  </section>
+</aside>
+
+

@@ -1,0 +1,17 @@
+<main>
+  <h1>
+  Edit article
+  </h1>
+  <%= render 'article_errors' %>
+  <%= form_with(model: @article, data: { turbo: false }) do |form| %>
+    <%= render partial: 'form', locals: { form: form } %>
+    <br>
+    <%= form.submit "Edit & save article" %>
+  <% end %>
+</main>
+<br>
+<aside>
+  <section>
+      <%= link_to "Cancel and back to article list", root_path %>
+  </section>
+</aside>
