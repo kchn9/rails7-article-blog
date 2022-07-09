@@ -1,13 +1,25 @@
-<main>
+<nav class="px-4 py-2 my-4 text-center">
+  <%= link_to "Edit", edit_article_path(@article) %> |
+  <%= link_to "Delete", article_path(@article), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %> |
+  <%= link_to "Back to articles list", root_path %>
+</nav>
+<main class="px-4 my-5 text-center">
   <h1>
     <%= @article.title %>
   </h1>
+  <br>
+  <h2>
+    <i>
+    Created by <%= @article.user.username %>
+    </i>
+  </h2>
   <p>
     <%= @article.content %>
   </p>
 </main>
-<section>
-  <%= link_to "Edit", edit_article_path(@article) %> |
-  <%= link_to "Delete", article_path(@article), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %> |
-  <%= link_to "Back to articles list", root_path %>
-</section>
+<footer class="text-center">
+  <p>
+    First created <%= distance_of_time_in_words_to_now(@article.created_at) %> ago, last update <%= time_ago_in_words(@article.updated_at) %> ago
+  </p>
+</footer>
+

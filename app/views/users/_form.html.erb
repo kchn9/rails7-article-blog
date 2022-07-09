@@ -1,0 +1,26 @@
+<%= form_with(model: @user, data: { turbo: false }, class: "text-center" ) do |form| %>
+  <fieldset>
+    <legend>
+      <h1>
+      Creating new user
+      </h1>
+    </legend>
+    <div class="py-2 my-2">
+      <%= form.label :username, class: "my-3" %>
+      <br>
+      <%= form.text_field :username, size:32, autofocus:true, placeholder: "Your username" %>
+    </div>
+    <div class="py-2 my-2">
+      <%= form.label :email, class: "my-3" %>
+      <br>
+      <%= form.email_field :email, size:32, placeholder: "Your email" %>
+    </div>
+    <div class="py-2 my-2">
+      <%= form.label :password, class: "my-3" %>
+      <br>
+      <%= form.password_field :password, size:32, autofocus:true, placeholder: "Your password" %>
+    </div>
+  </fieldset>
+  <%= form.submit "Sign up", class: "btn btn-primary my-4", style: "width: 200px"%>
+<% end %>
+

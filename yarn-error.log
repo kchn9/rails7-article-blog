@@ -1,0 +1,26 @@
+Arguments: 
+  /Users/kchn9/.nvm/versions/node/v16.15.1/bin/node /Users/kchn9/.node/corepack/yarn/1.22.15/bin/yarn.js add bootstrap@5.2.0-beta1 jquery popper.js
+
+PATH: 
+  /Users/kchn9/.nvm/versions/node/v16.15.1/bin:/opt/homebrew/lib/ruby/gems/3.1.0/bin:/opt/homebrew/opt/ruby/bin:/usr/local/opt/postgresql/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.22.15
+
+Node version: 
+  16.15.1
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: 4384834944:error:1408F119:SSL routines:ssl3_get_record:decryption failed or bad record mac:../deps/openssl/openssl/ssl/record/ssl3_record.c:677:
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

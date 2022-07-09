@@ -1,0 +1,12 @@
+<main>
+  <header class="text-center py-2 my-2">
+    <h1 class="display-5 fw-bold">
+    Sign up
+    </h1>
+  </header>
+  <%= render 'shared/errors', obj: @user %>
+  <%= render partial: 'form' %>
+</main>
+<nav class="px-4 py-2 my-4 text-center">
+  <%= link_to "Back to articles list", root_path %>
+</nav>

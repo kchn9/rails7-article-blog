@@ -1,0 +1,14 @@
+<% if obj.errors.any? %>
+  <h3 class="text-center">
+  The following errors prevented <%= obj.class %> from being posted:
+  </h3>
+  <ol>
+    <% obj.errors.full_messages.each do |error| %>
+      <li>
+        <i>
+          <%= error %>
+        </i>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
