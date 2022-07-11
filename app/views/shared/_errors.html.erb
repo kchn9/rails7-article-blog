@@ -1,14 +1,15 @@
 <% if obj.errors.any? %>
-  <h3 class="text-center">
-  The following errors prevented <%= obj.class %> from being posted:
-  </h3>
-  <ol>
-    <% obj.errors.full_messages.each do |error| %>
-      <li>
-        <i>
+  <div class="bg-warning py-3 my-2 text-center">
+    <h3 class="text-center">
+    The following errors prevented <%= obj.class.to_s.downcase %> from being posted:
+    </h3>
+    <ul class="list-group">
+      <% obj.errors.full_messages.each do |error| %>
+        <li class="list-group-item list-group-item-warning">
           <%= error %>
-        </i>
-      </li>
-    <% end %>
-  </ol>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
+

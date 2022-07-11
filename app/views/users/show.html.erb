@@ -1,15 +1,15 @@
 <%= render 'shared/nav' %>
-<main>
-  <section class="py-5 my-5 text-center">
-    <h1 class="display-5 fw-bold">Articles</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Feel free to check our articles</p>
-    </div>
-  </div>
-  </section>
-  <section class="my-5 text-center">
+<main class="text-center">
+  <h1 class="my-4" >
+    <%= "#{@user.username}'s profile" %>
+  </h1>
+  <%= random_avatar_for_user @user %>
+  <%= link_to "Edit profile", edit_user_path(@user),  class: "btn btn-primary my-4" %>
+  <h2 class="my-4">
+    <%= "#{@user.username}'s articles:" %>
+  </h2>
     <dl>
-      <% @articles.each do |a| %>
+      <% @user.articles.each do |a| %>
         <article>
           <dt>
             <h2>
@@ -31,13 +31,7 @@
         </article>
       <% end %>
     </dl>
-  </section>
-
 </main>
-<aside>
-  <section class="px-4 py-5 text-size-16 text-center">
-        <%= link_to "Create new article", new_article_path %>
-  </section>
-</aside>
-
-
+<nav class="px-4 py-2 my-4 text-center">
+  <%= link_to "Back to articles list", root_path %>
+</nav>

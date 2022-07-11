@@ -1,8 +1,8 @@
-<%= form_with(model: @user, data: { turbo: false }, class: "text-center" ) do |form| %>
+<%= form_with(model: @user, url: signup_path, data: { turbo: false }, class: "text-center" ) do |form| %>
   <fieldset>
     <legend>
       <h1>
-      Creating new user
+      <%= "Creating new user" if @user.new_record? %>
       </h1>
     </legend>
     <div class="py-2 my-2">
@@ -21,6 +21,6 @@
       <%= form.password_field :password, size:32, autofocus:true, placeholder: "Your password" %>
     </div>
   </fieldset>
-  <%= form.submit "Sign up", class: "btn btn-primary my-4", style: "width: 200px"%>
+  <%= form.submit @user.new_record? ? "Sign up" : "Update account", class: "btn btn-primary my-4"%>
 <% end %>
 

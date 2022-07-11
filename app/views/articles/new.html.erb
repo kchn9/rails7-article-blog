@@ -1,7 +1,10 @@
+<%= render 'shared/nav' %>
 <main class="text-center">
-  <h1>
-  New Article
-  </h1>
+  <header class="text-center py-2 my-2">
+    <h1 class="display-5 fw-bold">
+    New article
+    </h1>
+  </header>
   <%= render 'shared/errors', obj: @article %>
   <%= form_with(scope: :article, url: articles_path, data: { turbo: false }) do |form| %>
     <%= render partial: 'form', locals: { form: form } %>

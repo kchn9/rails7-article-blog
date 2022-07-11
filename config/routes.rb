@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "articles#index"
+  match 'signup', :to => 'users#create', :via => 'post'
   get "signup", to: "users#new"
   resources :users, except: [:new]
   resources :articles

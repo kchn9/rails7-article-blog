@@ -1,0 +1,18 @@
+<%= render 'shared/nav' %>
+<main>
+  <h1 class="text-center py-2 my-2">
+  List of all registered users
+  </h1>
+  <ul class="text-center list-group">
+    <% @users.each do |user| %>
+      <li class="list-group-item">
+        <strong>
+          <%= link_to user.username, user %>
+        </strong>
+      </li>
+    <% end %>
+  </ul>
+</main>
+<nav class="px-4 py-2 my-4 text-center">
+  <%= link_to "Back to articles list", articles_path %>
+</nav>
