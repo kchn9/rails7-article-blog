@@ -4,30 +4,39 @@
     <%= "#{@user.username}'s profile" %>
   </h1>
   <%= random_avatar_for_user @user %>
-  <%= link_to "Edit profile", edit_user_path(@user),  class: "btn btn-primary my-4" %>
+  <% if logged_in? && @user == current_user %>
+    <%= link_to "Edit profile", edit_user_path(@user),  class: "btn btn-primary my-4" %>
+  <% end %>
   <h2 class="my-4">
     <%= "#{@user.username}'s articles:" %>
   </h2>
     <dl>
       <% @user.articles.each do |a| %>
-        <article>
-          <dt>
-            <h2>
+        <article class="card px-2 py-2 my-5" style="max-width: 70%; margin: 0 auto;">
+
+          <section class="card-header">
+            <h2 class="card-title">
               <%= a.title %>
             </h2>
-          </dt>
-          <dd>
-            <i>
+            <h3 class="card-subtitle">
+              by: <%= link_to "#{a.user.username}", user_path(a.user) %>
+            </h3>
+          </section>
+
+          <section class="card-body">
+            <p class="card-text">
               <%= a.content %>
-            </i>
-            <section class="py-2 my-2">
-              <ul class="px-0 mx-0">
-                  <%= link_to "Show", article_path(a) %> |
-                  <%= link_to "Edit", edit_article_path(a) %> |
-                  <%= link_to "Delete", article_path(a), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %>
-              </ul>
-            </section>
-          </dd>
+            </p>
+          </section>
+
+          <section class="card-footer py-2 my-2">
+            <%= link_to "Show", article_path(a), class:"btn btn-outline-primary" %>
+            <% if logged_in? && current_user == a.user %>
+              <%= link_to "Edit", edit_article_path(a), class:"btn btn-outline-success" %>
+              <%= link_to "Delete", article_path(a), class:"btn btn-outline-danger", data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %>
+            <% end %>
+          </section>
+
         </article>
       <% end %>
     </dl>

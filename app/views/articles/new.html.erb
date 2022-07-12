@@ -10,11 +10,7 @@
     <%= render partial: 'form', locals: { form: form } %>
     <br>
     <%= form.submit "Create article", class: "btn btn-primary my-0" %>
+    <%= link_to "Cancel and back to article list", root_path, class: "btn btn-danger" %>
   <% end %>
 </main>
 <br>
-<aside class="text-center py-3">
-  <section>
-    <%= link_to "Back to article list", root_path %>
-  </section>
-</aside>

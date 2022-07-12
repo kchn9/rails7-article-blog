@@ -6,8 +6,6 @@
     </h1>
   </header>
   <%= render 'shared/errors', obj: @user %>
-  <%= render partial: 'form' %>
+  <%= render partial: 'form', locals: { new: false } %>
 </main>
-<nav class="px-4 py-2 my-4 text-center">
-  <%= link_to "Back to articles list", articles_path %>
-</nav>
+

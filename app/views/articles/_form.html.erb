@@ -1,12 +1,12 @@
 <fieldset>
   <p>
-    <%= form.label :title %>
+    <%= form.label :title, class: "form-label" %>
     <br>
-    <%= form.text_field :title, size:32, autofocus:true, placeholder: "Article title" %>
+    <%= form.text_field :title, size:32, autofocus:true, placeholder: "Enter article title", class: "form-control w-50 mx-auto" %>
   </p>
   <p>
-    <%= form.label :content %>
+    <%= form.label :content, class: "form-label" %>
     <br>
-    <%= form.text_area :content, size:"90x20", wrap:"soft", placeholder: "Article content goes here..." %>
+    <%= form.text_area :content, size:"0x10", wrap:"soft", placeholder: "Put your content here", class: "form-control  w-50 mx-auto" %>
   </p>
 </fieldset>

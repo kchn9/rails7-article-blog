@@ -1,34 +1,52 @@
 <%= render 'shared/nav' %>
 <main>
-  <section class="py-5 my-5 text-center">
-    <h1 class="display-5 fw-bold">Articles</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Feel free to check our articles</p>
-    </div>
-  </div>
+  <section class="text-center position-relative" style="height: 400px; background: center no-repeat url(https://source.unsplash.com/random/?article,text);" >
+    <h1 class="shadow-sm p-3 mb-5 bg-body rounded py-3 px-5 display-5 fw-bold position-absolute top-50 start-50 translate-middle">
+    Articles
+      <p class="lead position-relative">
+        Feel free to check our articles
+      </p>
+    </h1>
   </section>
-  <section class="my-5 text-center">
+
+  <div class="w-75 mx-auto" style="max-width: 500px; border: .1px black solid; opacity: 15% "></div>
+
+  <section class="my-2 text-center">
     <dl>
       <% @articles.each do |a| %>
-        <article>
-          <dt>
-            <h2>
-              <%= a.title %>
+        <article class="card px-2 py-2 my-5" style="max-width: 70%; margin: 0 auto;">
+
+          <section class="card-header">
+            <h2 class="card-title">
+              <%= a.title.truncate(52) %>
             </h2>
-          </dt>
-          <dd>
-            <i>
-              <%= a.content %>
-            </i>
-            <section class="py-2 my-2">
-              <ul class="px-0 mx-0">
-                  <%= link_to "Show", article_path(a) %> |
-                  <%= link_to "Edit", edit_article_path(a) %> |
-                  <%= link_to "Delete", article_path(a), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %>
-              </ul>
-            </section>
-          </dd>
+            <h3 class="card-subtitle opacity-50 text-black-50">
+              by: <%= link_to "#{a.user.username}", user_path(a.user) %>
+            </h3>
+          </section>
+
+          <section class="card-body w-75 mx-auto">
+            <p class="card-text">
+              <%= a.content.truncate(352) %>
+            </p>
+          </section>
+
+          <section class="card-footer py-2 my-2">
+            <%= link_to "Show", article_path(a), class:"btn btn-outline-primary" %>
+            <% if logged_in? && current_user == a.user %>
+              <%= link_to "Edit", edit_article_path(a), class:"btn btn-outline-success" %>
+              <%= link_to "Delete", article_path(a), class:"btn btn-outline-danger", data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %>
+            <% end %>
+          </section>
+
+          <section class="card-footer py-2 my-2">
+            <%= distance_of_time_in_words_to_now(a.created_at) %> ago
+          </section>
+
         </article>
+
+        <div class="w-25 mx-auto" style="max-width: 500px; border: .1px black solid; opacity: 15% "></div>
+
       <% end %>
     </dl>
   </section>

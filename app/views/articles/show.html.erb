@@ -1,26 +1,31 @@
 <%= render 'shared/nav' %>
-<nav class="px-4 py-2 my-4 text-center">
-  <%= link_to "Edit", edit_article_path(@article) %> |
-  <%= link_to "Delete", article_path(@article), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %> |
-  <%= link_to "Back to articles list", root_path %>
-</nav>
-<main class="px-4 my-5 text-center">
-  <h1>
-    <%= @article.title %>
-  </h1>
-  <br>
-  <h2>
-    <i>
-    Created by <%= @article.user.username %>
-    </i>
-  </h2>
-  <p>
-    <%= @article.content %>
-  </p>
-</main>
-<footer class="text-center">
-  <p>
+<main class="px-4 my-4 py-4 text-center card">
+  <div class="card-header">
+    <h1 class="card-title py-2">
+      <%= @article.title %>
+    </h1>
+    <h4 class="card-subtitle py-2">
+      Created by <%= link_to @article.user.username, user_path(@article.user) %>
+    </h4>
+  </div>
+
+  <section class="card-body">
+    <p class="card-text py-2 w-50 mx-auto">
+      <%= @article.content %>
+    </p>
+  </section>
+
+  <div class="card-footer">
+    <p class="w-50 mx-auto">
     First created <%= distance_of_time_in_words_to_now(@article.created_at) %> ago, last update <%= time_ago_in_words(@article.updated_at) %> ago
-  </p>
-</footer>
+    </p>
+  </div>
+</main>
+<section class="px-4 py-2 my-4 text-center">
+  <% if logged_in? && current_user == @article.user %>
+    <%= link_to "Back to article list", articles_path, class:"btn btn-outline-primary" %>
+    <%= link_to "Edit", edit_article_path(@article), class:"btn btn-outline-success" %>
+    <%= link_to "Delete", article_path(@article), class:"btn btn-outline-danger", data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %>
+  <% end %>
+</section>
 
