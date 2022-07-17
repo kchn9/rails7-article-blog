@@ -141,8 +141,10 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
-    pg (0.21.0)
+    pg (1.4.1)
     popper_js (2.9.3)
+    postgresql (1.0.0)
+      pg
     public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
@@ -244,7 +246,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
-  pg
+  postgresql
   puma (~> 5.0)
   rails (~> 7.0.3)
   sassc-rails
