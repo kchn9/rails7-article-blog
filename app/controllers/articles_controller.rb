@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(receive_article_params)
     @article.user = current_user
     if @article.save && @article.user
-      flash[:notice] = "Article was created successfully."
+      flash[:success] = "Article was created successfully."
       redirect_to(@article)
     else
       render :new
@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(receive_article_params)
-      flash[:notice] = "Article was edited successfully."
+      flash[:success] = "Article was edited successfully."
       redirect_to(@article)
     else
       render :edit
@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy()
-    flash[:notice] = "Article was deleted successfully."
+    flash[:success] = "Article was deleted successfully."
     redirect_to articles_path, status: :see_other
   end
 
@@ -54,8 +54,8 @@ class ArticlesController < ApplicationController
   end
 
   def require_authorized_user
-    if current_user != @article.user
-      flash[:alert] = "You are not allowed to edit this article."
+    if current_user != @article.user && !current_user.admin?
+      flash[:warning] = "You are not allowed to edit this article."
       redirect_to @article
     end
   end

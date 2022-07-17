@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:notice] = "Account information was edited successfully."
+      flash[:success] = "Account information was edited successfully."
       redirect_to @user
     else
       render :edit
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = "User was created successfully. Welcome #{@user.username}!"
+      flash[:primary] = "User was created successfully. Welcome #{@user.username}!"
       redirect_to articles_path
     else
       render :new
@@ -39,12 +39,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.articles.each do |a|
-      a.destroy()
-    end
     @user.destroy
-    session[:user_id] = nil
-    flash[:notice] = "User deleted successfully."
+    if !current_user.admin?
+      session[:user_id] = nil
+    end
+    flash[:success] = "User deleted successfully."
     redirect_to articles_path, status: :see_other
   end
 
@@ -58,8 +57,8 @@ class UsersController < ApplicationController
   end
 
   def require_authorized_user
-    if current_user != @user
-      flash[:alert] = "You are not allowed to edit this user."
+    if current_user != @user && !current_user.admin?
+      flash[:danger] = "You are not allowed to edit this user."
       redirect_to users_path
     end
   end

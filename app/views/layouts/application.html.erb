@@ -11,9 +11,12 @@
   </head>
 
   <body>
+    <%= render 'shared/nav' %>
     <% flash.each do |name, msg| %>
-      <div class="alert alert-info text-center text-success bg-success bg-opacity-25">
-        <%= msg %>
+      <div class="<%= "alert alert-#{name} alert-dismissible fade show" %>" role="alert" >
+        <strong>
+          <%= msg %>
+        </strong>
       </div>
     <% end %>
     <%= yield %>
