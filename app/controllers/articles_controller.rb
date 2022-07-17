@@ -1,5 +1,8 @@
 class ArticlesController < ApplicationController
+
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:show, :index]
+  before_action :require_authorized_user, only: [:edit, :update, :destroy]
 
   def index
     @articles = Article.all()
@@ -49,4 +52,12 @@ class ArticlesController < ApplicationController
   def receive_article_params
     params.require(:article).permit(:title, :content)
   end
+
+  def require_authorized_user
+    if current_user != @article.user
+      flash[:alert] = "You are not allowed to edit this article."
+      redirect_to @article
+    end
+  end
+
 end

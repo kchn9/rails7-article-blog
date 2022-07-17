@@ -7,8 +7,4 @@ module ApplicationHelper
   def get_random_article_background_image
     "https://source.unsplash.com/random/?article"
   end
-
-  def logged_in?
-    !!current_user
-  end
 end

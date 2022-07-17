@@ -1,26 +1,29 @@
 <%= render 'shared/nav' %>
 <main>
-  <header class="text-center my-2 py-2">
-    <h1>
-      Log in
+  <header class="text-center py-2 my-2">
+    <h1 class="display-3 fw-bold">
+    Log in
     </h1>
   </header>
   <%= form_with(scope: :session, url: login_path , data: { turbo: false }, class: "text-center" ) do |form| %>
     <fieldset>
-      <div class="py-2 my-2">
-        <%= form.label :login, class: "my-3" %>
-        <br>
-        <%= form.email_field :login, size:32, placeholder: "Enter your email" %>
+      <legend class="mb-4">
+        <h1 class="display-5">
+          Enter user credentials
+        </h1>
+      </legend>
+      <div class="mx-auto w-25 form-floating my-3">
+        <%= form.text_field :login, class: "form-control form-control-lg", placeholder: "example" %>
+        <%= form.label :login, class: "form-label" %>
       </div>
-      <div class="py-2 my-2">
-        <%= form.label :password, class: "my-3" %>
-        <br>
-        <%= form.password_field :password, size:32, autofocus:true, placeholder: "Enter your password" %>
+      <div class="mx-auto w-25 form-floating my-3">
+        <%= form.password_field :password, class: "form-control form-control-lg", placeholder: "example" %>
+        <%= form.label :password, class: "form-label" %>
       </div>
     </fieldset>
     <%= form.submit "Log in", class: "btn btn-primary my-4"%>
   <% end %>
 </main>
 <nav class="px-4 py-2 my-4 text-center">
-  <%= link_to "Back to articles list", root_path %>
+  <%= link_to "Back to article list", articles_path, class:"btn btn-outline-primary" %>
 </nav>

@@ -1,29 +1,27 @@
 <%= form_with(model: @user, url: new ? signup_path : user_path(@user), data: { turbo: false }, class: "text-center" ) do |form| %>
-  <fieldset>
-    <legend>
-      <h1>
+  <fieldset class="bg-light py-3 w-75 mx-auto shadow rounded">
+    <legend class="mb-2">
+      <h1 class="display-4">
       <%= "Creating new user" if @user.new_record? %>
       </h1>
     </legend>
-    <div class="py-2 my-2">
-      <%= form.label :username, class: "form-label my-3" %>
-      <br>
-      <%= form.text_field :username, size:32, autofocus:true, class: "form-control mx-auto w-25", placeholder: "Your username" %>
+    <br>
+    <div class="mx-auto w-50 form-floating my-3">
+      <%= form.text_field :username, class: "form-control form-control-lg", placeholder: "example" %>
+      <%= form.label :username, class: "form-label" %>
     </div>
-    <div class="py-2 my-2">
-      <%= form.label :email, class: "form-label my-3" %>
-      <br>
-      <%= form.email_field :email, size:32, class: "form-control mx-auto w-25", placeholder: "Your email" %>
+    <div class="mx-auto w-50 form-floating my-3">
+      <%= form.email_field :email, class: "form-control form-control-lg" , placeholder: "email@example.com" %>
+      <%= form.label :email, class: "form-label" %>
     </div>
-    <div class="py-2 my-2">
-      <%= form.label :password, class: "form-label my-3" %>
-      <br>
-      <%= form.password_field :password, size:32, autofocus:true, class: "form-control mx-auto w-25", placeholder: "Your password" %>
+    <div class="mx-auto w-50 form-floating my-3">
+      <%= form.password_field :password, class: "form-control form-control-lg", placeholder: "secure password" %>
+      <%= form.label :password, class: "form-label" %>
+    </div>
+    <div class="my-4">
+      <%= form.submit @user.new_record? ? "Sign up" : "Update account", class: "btn btn-primary"%>
+      <%= link_to "Back", articles_path, class: "btn btn-outline-danger mx-auto" %>
     </div>
   </fieldset>
-  <div class="mt-4">
-    <%= form.submit @user.new_record? ? "Sign up" : "Update account", class: "btn btn-primary"%>
-    <%= link_to "Back", articles_path, class: "btn btn-outline-danger mx-auto" %>
-  </div>
 <% end %>
 
