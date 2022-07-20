@@ -55,11 +55,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end
-
-  def require_authorized_user
-    if current_user != @user && !current_user.admin?
-      flash[:danger] = "You are not allowed to edit this user."
-      redirect_to users_path
-    end
-  end
 end

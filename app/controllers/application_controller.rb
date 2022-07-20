@@ -17,4 +17,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_authorized_user
+    if current_user != @article.user && !current_user.admin?
+      flash[:warning] = "You are not allowed to edit this article."
+      redirect_to @article
+    end
+  end
+
 end

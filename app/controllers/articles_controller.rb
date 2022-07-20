@@ -52,12 +52,4 @@ class ArticlesController < ApplicationController
   def receive_article_params
     params.require(:article).permit(:title, :content)
   end
-
-  def require_authorized_user
-    if current_user != @article.user && !current_user.admin?
-      flash[:warning] = "You are not allowed to edit this article."
-      redirect_to @article
-    end
-  end
-
 end
