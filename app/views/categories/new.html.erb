@@ -1,0 +1,18 @@
+<main>
+  <%= render 'shared/errors', obj: @category %>
+  <%= form_with(model: @category, data: { turbo: false }, class: "text-center") do |form| %>
+    <fieldset class="my-3">
+      <legend class="display-4 mb-2">
+        Creating new article
+      </legend>
+      <div class="mx-auto w-50 form-floating">
+        <%= form.text_field :name, placeholder: "Enter a category name", class: "my-4 form-control form-control-lg" %>
+        <%= form.label :name, "Category name", class: "form-label" %>
+      </div>
+    </fieldset>
+    <div class="my-4">
+      <%= form.submit "Create new category", class: "btn btn-outline-primary"%>
+      <%= link_to "Back", articles_path, class: "btn btn-outline-secondary mx-auto" %>
+    </div>
+  <% end %>
+</main>

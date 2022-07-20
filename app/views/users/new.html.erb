@@ -1,9 +1,9 @@
 <main>
+  <%= render 'shared/errors', obj: @user %>
   <header class="text-center py-2 my-2">
     <h1 class="display-3 fw-bold">
     Sign up
     </h1>
   </header>
-  <%= render 'shared/errors', obj: @user %>
   <%= render partial: 'form', locals: { new: true } %>
 </main>
