@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   delete "login", to: "sessions#destroy"
   resources :users, except: [:new]
   resources :articles
+  resources :categories, except: [:destroy, :edit]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 end

@@ -10,6 +10,12 @@
 
   <div class="w-75 mx-auto" style="max-width: 500px; border: .1px black solid; opacity: 15% "></div>
 
+  <% if @articles.empty? %>
+    <div style="min-height: 150px; display: flex; justify-content: center; align-items: center;">
+      <h3 class="lead opacity-50 my-4 text-center">There are no articles. Would you like to add one?</h3>
+    </div>
+  <% end %>
+
   <section class="my-2 text-center">
     <dl>
       <% @articles.reverse_each do |a| %>
@@ -51,10 +57,8 @@
   </section>
 
 </main>
-<aside>
-  <section class="px-4 py-5 text-size-16 text-center">
-        <%= link_to "Create new article", new_article_path %>
-  </section>
-</aside>
+<nav class="px-4 py-2 my-4 text-center">
+  <%= link_to "Create new article", new_article_path, class: "btn btn-outline-primary" %>
+</nav>
 
 

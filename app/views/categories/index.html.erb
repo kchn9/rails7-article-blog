@@ -1,0 +1,19 @@
+<main>
+    <h1 class="display-4 p-4 m-4 text-center" >
+      Categories
+    </h1>
+  <ul class="text-center list-group">
+    <% @categories.each do |category| %>
+      <li class="list-group-item">
+        <div>
+          <strong>
+            <%= link_to category.name, category, class: "lead" %>
+          </strong>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</main>
+<nav class="px-4 py-2 my-4 text-center">
+  <%= link_to "Back to articles list", articles_path, class: "btn btn-outline-primary" %>
+</nav>

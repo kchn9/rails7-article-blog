@@ -29,8 +29,10 @@
 
   <% if @user.articles.empty? %>
     <% if logged_in? && @user == current_user %>
-      <p class="lead my-5 py-5">
-        <%= link_to "Nothing here, you may want to create your first post!", new_article_path %>
+      <p>
+        <%= link_to "You have no articles to show.", new_article_path, class: "lead opacity-50 my-4 text-center text-black text-decoration-none" %>
+        <br>
+        <%= link_to "Make sure you create one today!", new_article_path, class: "lead opacity-50 my-4 text-center text-black text-decoration-none" %>
       </p>
     <% else %>
       <p>User has 0 posts already.</p>
