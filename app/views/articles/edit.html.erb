@@ -1,14 +1,8 @@
-<main class="text-center">
-  <header class="text-center py-2 my-2">
-    <h1 class="display-5 fw-bold">
-    Edit article
-    </h1>
-  </header>
+<main>
   <%= render 'shared/errors', obj: @article %>
-  <%= form_with(model: @article, data: { turbo: false }) do |form| %>
-    <%= render partial: 'form', locals: { form: form } %>
-    <%= form.submit "Save & back to article list", class:"btn btn-outline-primary" %>
-    <%= link_to "Delete", article_path(@article), class:"btn btn-outline-danger", data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %>
-  <% end %>
+  <%= render 'form' %>
+  <div class="mb-3 w-50 mx-auto">
+    <%= link_to "Cancel and back to articles list", articles_path, class: "btn btn-outline-secondary" %>
+  </div>
 </main>
 <br>

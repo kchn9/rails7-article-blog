@@ -1,12 +1,23 @@
-<fieldset>
-  <p>
-    <%= form.label :title, class: "form-label" %>
-    <br>
-    <%= form.text_field :title, size:32, autofocus:true, placeholder: "Enter article title", class: "form-control w-50 mx-auto" %>
-  </p>
-  <p>
-    <%= form.label :content, class: "form-label" %>
-    <br>
-    <%= form.text_area :content, size:"0x10", wrap:"soft", placeholder: "Put your content here", class: "form-control  w-50 mx-auto" %>
-  </p>
-</fieldset>
+<%= form_with(model: @article, data: { turbo: false }) do |f| %>
+  <legend class="text-center py-2 my-2">
+    <h3 class="display-4">
+      <%= @article.new_record? ? "Creating new article" : "Editing an article" %>
+    </h3>
+  </legend>
+  <fieldset>
+    <div class="mb-3 w-50 mx-auto">
+      <%= f.label :title, class: "mx-auto form-label" %>
+      <%= f.text_field :title, size:32, autofocus:true, placeholder: "Enter article title", class: "form-control" %>
+    </div>
+    <div class="mb-3 w-50 mx-auto">
+      <%= f.label :content, class: "mx-auto form-label" %>
+      <%= f.text_area :content, size:"0x10", wrap:"soft", placeholder: "Put your content here", class: "form-control" %>
+    </div>
+    <div class="mb-3 w-50 mx-auto">
+      <%= f.submit @article.new_record? ? "Create article" : "Save", class: "btn btn-primary" %>
+      <% if !@article.new_record? %>
+        <%= link_to "Delete", article_path(@article), class:"btn btn-danger", data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %>
+      <% end %>
+    </div>
+  </fieldset>
+<% end %>
