@@ -55,4 +55,12 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end
+
+  def require_authorized_user
+    if current_user != @user && !current_user.admin?
+      flash[:warning] = "You are not allowed to perform that action"
+      redirect_to @user
+    end
+  end
+
 end
